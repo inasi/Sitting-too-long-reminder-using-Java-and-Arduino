@@ -5,4 +5,4 @@ When the countdown ends, a buzzer is supposed to ring and the OLED should displa
 The buzzer can be turned off when a button on the grove board is pressed. 
 A motion sensor connected to the Arduino board sends data to Java where a graph displays how many times a person stood up during the interval.
 
-![My Image](majorprojecthardware.png)
+![My Image](majorprojecthardware.PNG)
