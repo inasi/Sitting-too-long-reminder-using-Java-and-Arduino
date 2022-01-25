@@ -25,7 +25,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
-        var controller = new DataController(); // create the controller
+        var controller = new DataController(); 
         var serialPort = SerialPortService.getSerialPort("COM4");
         var outputStream = serialPort.getOutputStream();
         var button = new Button("A button");
@@ -70,15 +70,14 @@ public class Main extends Application {
         pane.setLeft(label);
 
         serialPort.addDataListener(controller);
-
-        stage.setTitle("My Equation");
-
+        
+        stage.setTitle("Graph");
         var now = System.currentTimeMillis();
-        var xAxis = new NumberAxis("time (ms since Jan 1, 1970)", now, now + 50000, 10000); // creates the x-axis (which automatically updates)
-        var yAxis = new NumberAxis("y", 0, MAX_VALUE, 10); // creates the y-axis
+        var xAxis = new NumberAxis("time", now, now + 50000, 10000);
+        var yAxis = new NumberAxis("y", 0, MAX_VALUE, 10);
 
-        var series = new XYChart.Series<>(controller.getDataPoints()); // creates the series (all the data)
-        var lineChart = new LineChart<>(xAxis, yAxis, FXCollections.singletonObservableList(series)); // creates the chart
+        var series = new XYChart.Series<>(controller.getDataPoints()); 
+        var lineChart = new LineChart<>(xAxis, yAxis, FXCollections.singletonObservableList(series));
         lineChart.setTitle("Motion Graph");
         pane.setCenter(lineChart);
         stage.setScene(scene);
